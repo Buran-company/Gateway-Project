@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package grpc;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/Buran_Company/Gateway/grpc";
+
+service Search {
+  rpc AddressSearch(Msg) returns (Response) {
+    option (google.api.http) = {
+      get: "/api/search"
+    };
+  }
+}
+
+service Auth {
+  rpc Register(Msg) returns (Response) {
+    option (google.api.http) = {
+      get: "/api/register"
+    };
+  }
+}
+
+service User {
+  rpc Profile(Msg) returns (Response) {
+    option (google.api.http) = {
+      get: "/api/profile"
+    };
+  }
+}
+
+message Msg {
+  repeated string args = 1;
+}
+
+message Response {
+  string resp = 1;
+}
